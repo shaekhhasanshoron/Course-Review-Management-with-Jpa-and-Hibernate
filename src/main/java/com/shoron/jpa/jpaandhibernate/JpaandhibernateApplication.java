@@ -27,6 +27,8 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		Course course = courseRepository.findById(1001L);
 		logger.info("Course Details {}", course);
 		
+		courseRepository.save(new Course("CSE423"));
+		
 		// courseRepository.deleteById(1001L);
 		
 	}
