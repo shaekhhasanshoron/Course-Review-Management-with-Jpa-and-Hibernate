@@ -1,12 +1,30 @@
 package com.shoron.jpa.jpaandhibernate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class JpaandhibernateApplication {
+import com.shoron.jpa.jpaandhibernate.model.Course;
+import com.shoron.jpa.jpaandhibernate.repository.CourseRepository;
 
+@SpringBootApplication
+public class JpaandhibernateApplication implements CommandLineRunner{
+
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	public static void main(String[] args) {
 		SpringApplication.run(JpaandhibernateApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		Course course = courseRepository.findById(1001L);
+		logger.info("Course Details {}", course);
 	}
 }
