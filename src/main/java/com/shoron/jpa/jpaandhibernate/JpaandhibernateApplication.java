@@ -24,12 +24,14 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course = courseRepository.findById(1001L);
-		logger.info("Course Details {}", course);
-		
-		courseRepository.save(new Course("CSE423"));
+//		Course course = courseRepository.findById(1001L);
+//		logger.info("Course Details {}", course);
+//		
+//		courseRepository.save(new Course("CSE423"));
 		
 		// courseRepository.deleteById(1001L);
+		
+		courseRepository.changeUsingEntityManager();
 		
 	}
 }

@@ -38,4 +38,11 @@ public class CourseRepository {
 		em.remove(course);
 	}
 	
+	
+	public void changeUsingEntityManager(){
+		
+		Course course1 = findById(1001L);
+		course1.setName("ECO103");
+	}
+	
 }
