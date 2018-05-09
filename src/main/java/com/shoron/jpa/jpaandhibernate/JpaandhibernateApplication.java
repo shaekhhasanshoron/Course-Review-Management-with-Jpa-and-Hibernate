@@ -26,5 +26,7 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		Course course = courseRepository.findById(1001L);
 		logger.info("Course Details {}", course);
+		
+		courseRepository.deleteById(1001L);
 	}
 }
