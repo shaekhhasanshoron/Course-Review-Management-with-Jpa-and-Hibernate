@@ -3,6 +3,11 @@ package com.shoron.jpa.jpaandhibernate.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,13 +29,27 @@ public class CourseRepositoryTest {
 	@Autowired
 	CourseRepository repository;
 	
+	@Autowired
+	EntityManager em;
+	
 	@Test
 	public void findById() {
-		Course course = repository.findById(1001L);
+//		Course course = repository.findById(1001L);
+//		
+//		assertEquals("ECO101", course.getName());
 		
-		assertEquals("ECO101", course.getName());
+		List resultList = em.createQuery("Select c From Course c").getResultList();
+		logger.info(" Select c From Courses c > {} ", resultList);
 	}
 
+	@Test
+	public void findById_typed() {
+
+		TypedQuery<Course> query = em.createQuery("Select c From Course c", Course.class);
+		
+		List<Course> resultList = query.getResultList();
+		logger.info(" Select c From Courses c > {} ", resultList);
+	}
 	@Test
 	@DirtiesContext  // after test run spring will automatically reset data
 	public void deleteById() {
