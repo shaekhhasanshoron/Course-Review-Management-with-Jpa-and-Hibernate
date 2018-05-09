@@ -39,5 +39,18 @@ public class CourseRepositoryTest {
 		
 		assertNull(repository.findById(1002L));
 	}
+	
+	@Test
+	@DirtiesContext  // after test run spring will automatically reset data
+	public void save() {
+		
+		Course course = repository.findById(1001L);
+		assertEquals("ECO101", course.getName());
+		
+		course.setName("ENV103");
+		
+		repository.save(course);
+		assertEquals("ENV103", course.getName());
+	}
 
 }
