@@ -9,12 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.shoron.jpa.jpaandhibernate.model.Course;
 import com.shoron.jpa.jpaandhibernate.repository.CourseRepository;
+import com.shoron.jpa.jpaandhibernate.repository.StudentRepository;
 
 @SpringBootApplication
 public class JpaandhibernateApplication implements CommandLineRunner{
 
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	@Autowired
+	private StudentRepository studentRepository;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -33,6 +37,8 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		// courseRepository.deleteById(1001L);
 		
 		//courseRepository.changeUsingEntityManager();
+		
+		studentRepository.saveStudentWithPassport();
 		
 	}
 }
