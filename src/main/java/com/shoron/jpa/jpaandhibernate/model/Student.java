@@ -26,7 +26,7 @@ public class Student {
 	@OneToOne(fetch=FetchType.LAZY)
 	private Passport passport;
 	
-	//Jpa should have aempty constructor
+	//Jpa should have a empty constructor
 	public Student(){		
 	}
 	

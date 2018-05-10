@@ -25,7 +25,7 @@ public class Passport {
 	
 	//want to make student the owning side of the student passport relationship
 	//that is why we have to put mappedBy in non owning side of the relationship
-	@OneToOne(fetch=FetchType.LAZY, mappedBy="passport")
+	@OneToOne(fetch=FetchType.LAZY, mappedBy ="passport")
 	private Student student;
 
 
@@ -61,7 +61,7 @@ public class Passport {
 
 	@Override
 	public String toString() {
-		return "Passport [id=" + id + ", number=" + number + ", student=" + student + "]";
+		return "Passport [id=" + id + ", number=" + number +  "]";
 	}
 	
 

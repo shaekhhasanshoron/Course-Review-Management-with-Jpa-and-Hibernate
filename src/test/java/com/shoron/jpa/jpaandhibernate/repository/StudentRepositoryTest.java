@@ -57,7 +57,7 @@ public class StudentRepositoryTest {
 		//Retrieve passport
 		Passport passport = student.getPassport();
 		//Persistence Context (student, passport)
-		
+
 		
 		//update passport
 		passport.setnumber("P458955");
@@ -69,6 +69,20 @@ public class StudentRepositoryTest {
 		
 		
 	}
+	
+	@Test
+	@Transactional
+	public void retrievePassportAndAssociatedStudent() {
+
+		Passport passport = em.find(Passport.class, 4001L);
+		
+	
+		
+		logger.info("Passport -> {} ", passport);
+		
+		logger.info("Student -> {}", passport.getStudent());
+	}
+
 
 
 }
