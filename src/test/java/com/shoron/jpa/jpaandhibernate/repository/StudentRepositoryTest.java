@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shoron.jpa.jpaandhibernate.JpaandhibernateApplication;
 import com.shoron.jpa.jpaandhibernate.model.Course;
@@ -34,13 +35,14 @@ public class StudentRepositoryTest {
 	EntityManager em;
 	
 	@Test
+	@Transactional
 	public void retrieveStudentAndPassportDetails() {
 
 		Student student = em.find(Student.class, 2001L);
 		
 		logger.info("Student -> {} ", student);
 		
-		logger.info("passpor -> {}", student.getPassport());
+		 logger.info("passport -> {}", student.getPassport());
 	}
 
 
