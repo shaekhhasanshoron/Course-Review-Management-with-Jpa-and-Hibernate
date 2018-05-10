@@ -32,7 +32,7 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 		// courseRepository.deleteById(1001L);
 		
-		courseRepository.changeUsingEntityManager();
+		//courseRepository.changeUsingEntityManager();
 		
 	}
 }
