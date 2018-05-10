@@ -24,11 +24,11 @@ insert into student(id, name, passport_id) values (2003, 'Shaekh', 4003);
 
 
 
-insert into review(id, rating, description) values (5001, '5', 'Great');
+insert into review(id, rating, description, course_id) values (5001, '5', 'Great', 1001);
 
-insert into review(id, rating, description) values (5002, '4', 'Good');
+insert into review(id, rating, description, course_id) values (5002, '4', 'Good', 1001);
 
-insert into review(id, rating, description) values (5003, '2', 'Not Good');
+insert into review(id, rating, description, course_id) values (5003, '2', 'Not Good', 1003);
 
 
 
