@@ -24,6 +24,7 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		
 //		Course course = courseRepository.findById(1001L);
 //		logger.info("Course Details {}", course);
 //		
