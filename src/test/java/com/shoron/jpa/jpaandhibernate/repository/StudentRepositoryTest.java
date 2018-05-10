@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shoron.jpa.jpaandhibernate.JpaandhibernateApplication;
 import com.shoron.jpa.jpaandhibernate.model.Course;
+import com.shoron.jpa.jpaandhibernate.model.Passport;
 import com.shoron.jpa.jpaandhibernate.model.Student;
 
 @RunWith(SpringRunner.class)
@@ -45,6 +46,29 @@ public class StudentRepositoryTest {
 		 logger.info("passport -> {}", student.getPassport());
 	}
 
+	
+	@Test
+	@Transactional // everything should succeed or nothing will be succeed
+	public void test() {
+		// Retrieve student 
+		Student student = em.find(Student.class, 2001L);
+		//Persistence Context (student)
+		
+		//Retrieve passport
+		Passport passport = student.getPassport();
+		//Persistence Context (student, passport)
+		
+		
+		//update passport
+		passport.setnumber("P458955");
+		//Persistence Context (student, passport++)
+		
+		//update student
+		student.setName("Shaekh Hasan");
+		//Persistence Context (student++, passport++)
+		
+		
+	}
 
 
 }
