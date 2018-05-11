@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.shoron.jpa.jpaandhibernate.model.Course;
 import com.shoron.jpa.jpaandhibernate.model.Review;
+import com.shoron.jpa.jpaandhibernate.model.Student;
 import com.shoron.jpa.jpaandhibernate.repository.CourseRepository;
 import com.shoron.jpa.jpaandhibernate.repository.StudentRepository;
 
@@ -46,11 +47,15 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 	
 		
-		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("4", "Nice work"));
-		reviews.add(new Review("3", "Well Done"));
+//		List<Review> reviews = new ArrayList<>();
+//		reviews.add(new Review("4", "Nice work"));
+//		reviews.add(new Review("3", "Well Done"));
+//		
+//		courseRepository.addReviewsForCourse(1003L,reviews);
 		
-		courseRepository.addReviewsForCourse(1003L,reviews);
+		//studentRepository.insertStudentandCourse();
+		
+		studentRepository.insertStudentandCourse(new Student("Jack"), new Course("ENG091"));
 		
 	}
 }

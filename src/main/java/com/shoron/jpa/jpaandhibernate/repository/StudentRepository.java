@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shoron.jpa.jpaandhibernate.model.Course;
 import com.shoron.jpa.jpaandhibernate.model.Passport;
 import com.shoron.jpa.jpaandhibernate.model.Student;
 
@@ -57,6 +58,31 @@ public class StudentRepository {
 		
 		logger.info("Student -> {} ", student);
     
+	}
+	
+	public void insertStudentandCourse(){
+		
+		Student student = new Student("Mike");
+		Course course = new Course("PSY101");
+		
+		em.persist(student);
+		em.persist(course);
+		
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		em.persist(student); // persist the owning side
+		
+	}
+	
+	public void insertStudentandCourse(Student student, Course course){
+
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		em.persist(student);
+		em.persist(course);
+		
 	}
 	
 }
