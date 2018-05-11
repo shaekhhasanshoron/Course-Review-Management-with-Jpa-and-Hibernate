@@ -1,5 +1,8 @@
 package com.shoron.jpa.jpaandhibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.shoron.jpa.jpaandhibernate.model.Course;
+import com.shoron.jpa.jpaandhibernate.model.Review;
 import com.shoron.jpa.jpaandhibernate.repository.CourseRepository;
 import com.shoron.jpa.jpaandhibernate.repository.StudentRepository;
 
@@ -40,7 +44,13 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 		//studentRepository.saveStudentWithPassport();
 		
-		courseRepository.addReviewsForCourse();
+	
+		
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("4", "Nice work"));
+		reviews.add(new Review("3", "Well Done"));
+		
+		courseRepository.addReviewsForCourse(1003L,reviews);
 		
 	}
 }

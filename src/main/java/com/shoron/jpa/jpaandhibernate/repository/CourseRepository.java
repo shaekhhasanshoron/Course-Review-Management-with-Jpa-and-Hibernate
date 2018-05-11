@@ -1,5 +1,7 @@
 package com.shoron.jpa.jpaandhibernate.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.slf4j.Logger;
@@ -51,6 +53,7 @@ public class CourseRepository {
 	}
 
 	public void addReviewsForCourse() {
+		
 		Course course = findById(1003L);
 		logger.info("Course Rievews -> {}", course.getReviews());
 		
@@ -69,6 +72,22 @@ public class CourseRepository {
 		em.persist(review1);
 		em.persist(review2);
 		
+	}
+	
+	public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+		
+		Course course = findById(courseId);
+		logger.info("Course Rievews -> {}", course.getReviews());
+		
+		for(Review review:reviews){			
+			
+			// setting the relationship
+			course.addReview(review);
+			review.setCourse(course);
+
+			// saving to review to the db
+			em.persist(review);
+		}
 	}
 	
 }
