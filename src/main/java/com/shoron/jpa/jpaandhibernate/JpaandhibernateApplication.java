@@ -38,7 +38,9 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 		//courseRepository.changeUsingEntityManager();
 		
-		studentRepository.saveStudentWithPassport();
+		//studentRepository.saveStudentWithPassport();
+		
+		courseRepository.addReviewsForCourse();
 		
 	}
 }
