@@ -16,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shoron.jpa.jpaandhibernate.JpaandhibernateApplication;
 import com.shoron.jpa.jpaandhibernate.model.Course;
+import com.shoron.jpa.jpaandhibernate.model.Review;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=JpaandhibernateApplication.class)
@@ -70,6 +72,23 @@ public class CourseRepositoryTest {
 		
 		repository.save(course);
 		assertEquals("ENV103", course.getName());
+	}
+	
+	@Test
+	@Transactional
+	public void retriveReviewsForCourse() {
+
+		Course course = repository.findById(1001L);
+		course.getReviews();
+		logger.info("Course Reviews -> {}", course.getReviews());
+	}
+	
+	@Test
+	@Transactional
+	public void retriveCourseForReview() {
+
+		Review review = em.find(Review.class, 5001L);
+		logger.info("Courses for 5001 review -> {}", review.getCourse());
 	}
 
 }
