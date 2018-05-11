@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -31,6 +33,9 @@ public class Student {
 	
 	
 	@ManyToMany
+	@JoinTable(name="STUDENT_COURSE",
+	joinColumns = @JoinColumn(name="STUDENT_ID"),
+	inverseJoinColumns = @JoinColumn(name="COURSE_ID"))
 	private List<Course> courses = new ArrayList<>();
 	
 	//Jpa should have a empty constructor

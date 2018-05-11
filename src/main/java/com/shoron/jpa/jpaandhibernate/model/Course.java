@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -35,7 +37,7 @@ public class Course {
 	private List<Review> reviews = new ArrayList<>();
 	
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="courses") // student is the owning side of the relationship
 	private List<Student> students = new ArrayList<>();
 	
 	//Jpa should have aempty constructor
