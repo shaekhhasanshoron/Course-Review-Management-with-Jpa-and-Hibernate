@@ -68,6 +68,9 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 		employeeRepository.insert(new PartTimeEmployee("Mike", new BigDecimal("20")));
 		
-		logger.info("All employees -> {}", employeeRepository.retrieveAllEmployees());
+		logger.info("All Full time employees -> {}", employeeRepository.retrieveFullTimeEmployee());
+		
+		logger.info("All Part time employees -> {}", employeeRepository.retrievePartTimeEmployee());
+		
 	}
 }

@@ -8,10 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 
-@Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+
+
+//@Entity
+//@Inheritance(strategy=InheritanceType.JOINED)
+
+
+@MappedSuperclass // no table exists for super class
 public abstract class Employee {
 
 	@Id

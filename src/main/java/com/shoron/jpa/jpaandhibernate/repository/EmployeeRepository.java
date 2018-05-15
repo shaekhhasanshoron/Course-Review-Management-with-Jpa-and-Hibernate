@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shoron.jpa.jpaandhibernate.model.Course;
 import com.shoron.jpa.jpaandhibernate.model.Employee;
+import com.shoron.jpa.jpaandhibernate.model.FullTimeEmployee;
+import com.shoron.jpa.jpaandhibernate.model.PartTimeEmployee;
 import com.shoron.jpa.jpaandhibernate.model.Review;
 
 @Repository
@@ -30,10 +32,17 @@ public class EmployeeRepository {
 	}
 	
 	//retrieve all employee
-	public List<Employee> retrieveAllEmployees(){
-		return em.createQuery("select e from Employee e", Employee.class)
-				.getResultList();
+//	public List<Employee> retrieveAllEmployees(){
+//		return em.createQuery("select e from Employee e", Employee.class)
+//				.getResultList();
+//	}
+//	
+	public List<PartTimeEmployee> retrievePartTimeEmployee(){
+		return em.createQuery("select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
 	}
 
+	public List<FullTimeEmployee> retrieveFullTimeEmployee(){
+		return em.createQuery("select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
+	}
 	
 }
