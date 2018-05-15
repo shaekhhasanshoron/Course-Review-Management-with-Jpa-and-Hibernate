@@ -1,5 +1,6 @@
 package com.shoron.jpa.jpaandhibernate;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.shoron.jpa.jpaandhibernate.model.Course;
+import com.shoron.jpa.jpaandhibernate.model.FullTimeEmployee;
+import com.shoron.jpa.jpaandhibernate.model.PartTimeEmployee;
 import com.shoron.jpa.jpaandhibernate.model.Review;
 import com.shoron.jpa.jpaandhibernate.model.Student;
 import com.shoron.jpa.jpaandhibernate.repository.CourseRepository;
+import com.shoron.jpa.jpaandhibernate.repository.EmployeeRepository;
 import com.shoron.jpa.jpaandhibernate.repository.StudentRepository;
 
 @SpringBootApplication
@@ -24,6 +28,9 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -55,7 +62,12 @@ public class JpaandhibernateApplication implements CommandLineRunner{
 		
 		//studentRepository.insertStudentandCourse();
 		
-		studentRepository.insertStudentandCourse(new Student("Jack"), new Course("ENG091"));
+		//studentRepository.insertStudentandCourse(new Student("Jack"), new Course("ENG091"));
 		
+		employeeRepository.insert(new FullTimeEmployee("Joe", new BigDecimal("10000")));
+		
+		employeeRepository.insert(new PartTimeEmployee("Mike", new BigDecimal("20")));
+		
+		logger.info("All employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 }
