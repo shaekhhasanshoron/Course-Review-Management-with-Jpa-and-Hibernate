@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.junit.Test;
@@ -75,4 +76,61 @@ public class JPQLTest {
 		logger.info("Students with passport number having 56 -> {}", resultList);
 	}
 	
+	
+	@Test
+	public void join(){
+		// it is not a typed query because it does not have a single type
+		Query query = em.createQuery("Select c, s from Course c JOIN c.students s");
+		
+		List<Object[]> resultList = query.getResultList();
+		
+		logger.info("Join table result size -> {}", resultList.size());
+		
+		for(Object[] result: resultList){
+			// result is a array of an array
+			logger.info("Course {} Student {}",
+					result[0] // course
+					, result[1] // students
+					);
+			
+		}
+	}
+	
+	@Test
+	public void left_join(){
+		// it is not a typed query because it does not have a single type
+		Query query = em.createQuery("Select c, s from Course c LEFT JOIN c.students s");
+		
+		List<Object[]> resultList = query.getResultList();
+		
+		logger.info("Join table result size -> {}", resultList.size());
+		
+		for(Object[] result: resultList){
+			// result is a array of an array
+			logger.info("Course {} Student {}",
+					result[0] // course
+					, result[1] // students
+					);
+			
+		}
+	}
+	
+	@Test
+	public void cross_join(){
+		// it is not a typed query because it does not have a single type
+		Query query = em.createQuery("Select c, s from Course c, Student s");
+		
+		List<Object[]> resultList = query.getResultList();
+		
+		logger.info("Join table result size -> {}", resultList.size());
+		
+		for(Object[] result: resultList){
+			// result is a array of an array
+			logger.info("Course {} Student {}",
+					result[0] // course
+					, result[1] // students
+					);
+			
+		}
+	}
 }
