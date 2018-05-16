@@ -12,7 +12,7 @@ insert into passport(id, number) values (4001, 'E56455');
 
 insert into passport(id, number) values (4002, 'H89554');
 
-insert into passport(id, number) values (4003, 'S45889');
+insert into passport(id, number) values (4003, 'S56889');
 
 
 

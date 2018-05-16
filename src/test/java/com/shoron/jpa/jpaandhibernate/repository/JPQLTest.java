@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shoron.jpa.jpaandhibernate.JpaandhibernateApplication;
 import com.shoron.jpa.jpaandhibernate.model.Course;
 import com.shoron.jpa.jpaandhibernate.model.Review;
+import com.shoron.jpa.jpaandhibernate.model.Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=JpaandhibernateApplication.class)
@@ -62,6 +63,16 @@ public class JPQLTest {
 		List<Course> resultList = query.getResultList();
 		
 		logger.info("Course have atleast 2 students -> {}", resultList);
+	}
+	
+	@Test
+	public void jpql_students_with_passport_having_certain_pattern(){
+		
+		TypedQuery<Student> query = em.createQuery("Select s from Student s where s.passport.number like '%56%'", Student.class);
+		
+		List<Student> resultList = query.getResultList();
+		
+		logger.info("Students with passport number having 56 -> {}", resultList);
 	}
 	
 }
