@@ -42,5 +42,26 @@ public class JPQLTest {
 		
 		logger.info("Course which do not have students -> {}", resultList);
 	}
+	
+	@Test
+	public void jpql_course_haveing_atleast_2_students(){
+		
+		TypedQuery<Course> query = em.createQuery("Select c from Course c where size(c.students) >= 2", Course.class);
+		
+		List<Course> resultList = query.getResultList();
+		
+		logger.info("Course have atleast 2 students -> {}", resultList);
+	}
+	
 
+	@Test
+	public void jpql_courses_orderBy_students(){
+		
+		TypedQuery<Course> query = em.createQuery("Select c from Course c order by size(c.students) desc", Course.class);
+		
+		List<Course> resultList = query.getResultList();
+		
+		logger.info("Course have atleast 2 students -> {}", resultList);
+	}
+	
 }
